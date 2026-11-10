@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7f5" />
+    <title>Gather — Multimodal Research Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="Gather home">
+          <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
+          <span>gather<span class="brand-period">.</span></span>
+        </a>
+        <div class="workspace-label">YOUR WORKSPACE</div>
+        <button class="nav-item active"><span class="nav-icon">✳</span> Research room</button>
+        <button class="nav-item" id="new-session"><span class="nav-icon">＋</span> New session</button>
+        <div class="sidebar-divider"></div>
+        <div class="sources-heading"><span>Sources</span><span class="source-count" id="source-count">0</span></div>
+        <div class="source-list" id="source-list">
+          <div class="empty-source">Your library is ready.<br />Drop in a few files to begin.</div>
+        </div>
+        <div class="sidebar-bottom">
+          <div class="privacy-note"><span class="lock-icon">◈</span><span><strong>Your room is private</strong><small>Sources clear when the server stops.</small></span></div>
+          <div class="profile"><div class="avatar">R</div><span><strong>Research workspace</strong><small>Personal library</small></span><span class="profile-menu">•••</span></div>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div class="breadcrumb"><span>Workspace</span><span class="crumb-slash">/</span><strong>Research room</strong></div>
+          <div class="topbar-right"><div class="connection-pill" id="connection-pill"><span class="connection-dot"></span><span id="connection-label">Connecting</span></div><button class="icon-button" title="Settings" aria-label="Settings">⚙</button></div>
+        </header>
+        <section class="conversation" id="conversation">
+          <div class="welcome" id="welcome">
+            <div class="eyebrow"><span class="eyebrow-line"></span> A clearer way to think across sources</div>
+            <h1>Bring the pieces<br />together<span class="headline-dot">.</span></h1>
+            <p class="welcome-copy">Papers, diagrams, recordings, spreadsheets. Add the material you’re working with and find the connections hiding between them.</p>
+            <div class="upload-card" id="drop-zone">
+              <input type="file" id="file-input" multiple accept=".pdf,.png,.jpg,.jpeg,.webp,.gif,.mp3,.wav,.m4a,.ogg,.webm,.mp4,.mov,.m4v,.avi,.mkv,.xlsx,.xlsm,.xltx,.xltm,.txt,.md" hidden />
+              <div class="upload-symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v5h14v-5" /></svg></div>
+              <div class="upload-text"><strong>Drop your sources here</strong><span>or <button id="browse-files" class="text-button">browse files</button> from your computer</span></div>
+              <div class="upload-types"><span>PDF</span><span>IMAGE</span><span>AUDIO</span><span>VIDEO</span><span>EXCEL</span></div>
+            </div>
+            <div class="suggestions-heading">A few things you can ask</div>
+            <div class="suggestion-grid">
+              <button class="suggestion" data-prompt="Compare the architecture in the diagram with the approach described in the paper."><span class="suggestion-icon purple">⌘</span><span>Compare a diagram<br />with a paper</span><span class="arrow">↗</span></button>
+              <button class="suggestion" data-prompt="Summarize the key findings across all of my sources."><span class="suggestion-icon green">≋</span><span>Find the shared<br />key findings</span><span class="arrow">↗</span></button>
+              <button class="suggestion" data-prompt="What evidence in the recordings supports the results in the spreadsheet?"><span class="suggestion-icon amber">◷</span><span>Connect recordings<br />to data</span><span class="arrow">↗</span></button>
+            </div>
+          </div>
+          <div class="message-list" id="message-list" aria-live="polite"></div>
+          <div class="upload-progress" id="upload-progress" hidden><span class="spinner"></span><span id="progress-label">Reading your sources…</span></div>
+        </section>
+        <footer class="composer-wrap">
+          <form class="composer" id="question-form">
+            <textarea id="question-input" rows="1" placeholder="Ask across your sources…" aria-label="Ask a question"></textarea>
+            <div class="composer-bottom"><div class="composer-hint"><span class="sparkle">✳</span><span id="composer-status">Your sources will appear here as context</span></div><div class="composer-actions"><button type="button" class="attach-button" id="attach-button" title="Add sources" aria-label="Add sources">＋</button><button type="submit" class="send-button" id="send-button" aria-label="Send question"><svg viewBox="0 0 20 20"><path d="M10 15V5m0 0L6 9m4-4 4 4"/></svg></button></div></div>
+          </form>
+          <div class="footer-caption">Gather can make mistakes. Check important details against the cited sources.</div>
+        </footer>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="/assets/app.js" defer></script>
+  </body>
+</html>
